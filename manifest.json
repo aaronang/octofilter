@@ -1,0 +1,6 @@
+{
+    "name": "Octofilter",
+    "version": "0.1",
+    "description": "File filter for GitHub code reviews as a Chrome extension.",
+    "manifest_version": 2
+}
