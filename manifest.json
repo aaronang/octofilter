@@ -2,6 +2,9 @@
   "name": "Octofilter",
   "version": "0.1",
   "description": "File filter for GitHub code reviews as a Chrome extension.",
+  "background": {
+    "scripts": ["background.js"]
+  },
   "content_scripts": [
     {
       "matches": ["*://*.github.com/*"],
@@ -20,5 +23,6 @@
       "128": "images/icon128.png"
     }
   },
+  "permissions": ["tabs", "*://*.github.com/*"],
   "manifest_version": 2
 }
