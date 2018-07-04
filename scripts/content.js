@@ -94,10 +94,14 @@ function getFileExtensions() {
 
   return [
     ...new Set(
-      Array.from(diffs).map(node => {
-        const filepath = node.children[0].dataset.path;
-        return filepath.split(".").pop();
-      })
+      Array.from(diffs)
+        .map(node => {
+          const filepath = node.children[0].dataset.path;
+          const filename = filepath.split("/").pop();
+          const fileext = filename.split(".").filter(Boolean);
+          return fileext.length > 1 ? fileext.pop() : null;
+        })
+        .filter(Boolean)
     )
   ].sort();
 }
