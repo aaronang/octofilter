@@ -43,8 +43,17 @@ function createButton() {
   <!-- '"\` -->
   <!-- </textarea></xmp> -->
   <input name="utf8" type="hidden" value="✓">
-  <h4 class="mb-2">Collapse</h4>
-  <div id="octofilter-options" style="display: grid; grid-template-columns: 1fr 1fr 1fr;"></div>
+  <div class="BtnGroup d-flex flex-content-stretch js-diff-style-toggle">
+    <label class="flex-auto btn btn-sm BtnGroup-item text-center">
+      <input class="sr-only" value="collapse" name="octofilter-mode" type="radio">
+      Collapse
+    </label>
+    <label class="flex-auto btn btn-sm BtnGroup-item text-center selected">
+      <input class="sr-only" value="hide" name="octofilter-mode" type="radio" checked="checked">
+      Hide
+    </label>
+  </div>
+  <div id="octofilter-options" class="mt-3" style="display: grid; grid-template-columns: 1fr 1fr 1fr;"></div>
   <button id="octofilter-btn" class="btn btn-primary btn-sm col-12 mt-3" type="submit">Apply</button>
   </div>`;
 
@@ -65,7 +74,6 @@ function createButton() {
 
 function generateOptions() {
   const extensions = getFileExtensions();
-  console.log(extensions);
   const options = extensions
     .map(
       ext => `
@@ -78,7 +86,6 @@ function generateOptions() {
     )
     .join("");
   const container = document.querySelector("#octofilter-options");
-  console.log(options);
   container.innerHTML = options;
 }
 
@@ -117,6 +124,9 @@ function addListeners() {
 }
 
 function handleApply() {
+  const mode = document.querySelector("input:checked[name=octofilter-mode]")
+    .value;
+
   const checkboxes = document.querySelectorAll(".octofilter-ext");
   checkboxes.forEach(checkbox => {
     const ext = checkbox.value;
@@ -125,7 +135,11 @@ function handleApply() {
         .querySelectorAll(".file.js-file.js-details-container")
         .forEach(node => {
           if (node.children[0].dataset.path.split(".").pop() === ext) {
-            node.classList.add("open", "Details--on");
+            if (mode === "hide") {
+              node.style.display = "none";
+            } else {
+              node.classList.add("open", "Details--on");
+            }
           }
         });
     } else {
@@ -134,6 +148,7 @@ function handleApply() {
         .forEach(node => {
           if (node.children[0].dataset.path.split(".").pop() === ext) {
             node.classList.remove("open", "Details--on");
+            node.style.display = "block";
           }
         });
     }
