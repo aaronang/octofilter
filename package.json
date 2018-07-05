@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/aaronang/octofilter/issues"
   },
-  "homepage": "https://github.com/aaronang/octofilter#readme",
+  "homepage": "https://github.com/aaronang/octofilter",
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.2",
     "webpack": "^4.15.1",
