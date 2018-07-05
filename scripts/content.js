@@ -17,9 +17,9 @@ if (window.location.pathname.endsWith("files")) {
   main();
 }
 
-function main() {
-  createButton();
-  generateOptions();
+async function main() {
+  await createButton();
+  await generateOptions();
   addListeners();
 }
 
