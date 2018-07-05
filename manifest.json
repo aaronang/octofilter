@@ -3,12 +3,12 @@
   "version": "1.0.1",
   "description": "File filter for GitHub code reviews as a Chrome extension.",
   "background": {
-    "scripts": ["scripts/background.js"]
+    "scripts": ["background.js"]
   },
   "content_scripts": [
     {
       "matches": ["*://*.github.com/*"],
-      "js": ["scripts/content.js"]
+      "js": ["content.js"]
     }
   ],
   "icons": {
