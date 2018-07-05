@@ -1,6 +1,6 @@
 {
   "name": "Octofilter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "File filter for GitHub code reviews as a Chrome extension.",
   "background": {
     "scripts": ["background.js"]

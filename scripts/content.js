@@ -24,6 +24,10 @@ function main() {
 }
 
 async function createButton() {
+  if (document.querySelector(".octofilter-details")) {
+    return;
+  }
+
   const reviewTools = await elementReady(".pr-review-tools");
   const diffSettings = reviewTools.children[0];
 

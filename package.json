@@ -1,6 +1,6 @@
 {
   "name": "octofilter",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "File filter for GitHub code reviews as a Chrome extension.",
   "private": true,
   "scripts": {
