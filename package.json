@@ -4,7 +4,8 @@
   "description": "File filter for GitHub code reviews as a Chrome extension.",
   "private": true,
   "scripts": {
-    "build": "webpack --mode=production"
+    "dist": "webpack --mode=production",
+    "build": "webpack --mode=development --devtool source-map"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
     "copy-webpack-plugin": "^4.5.2",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "element-ready": "^3.0.0"
   }
 }

@@ -1,4 +1,4 @@
-"use strict";
+import elementReady from "element-ready";
 
 let status = "unavailable";
 
@@ -23,8 +23,8 @@ function main() {
   addListeners();
 }
 
-function createButton() {
-  const reviewTools = document.querySelector(".pr-review-tools");
+async function createButton() {
+  const reviewTools = await elementReady(".pr-review-tools");
   const diffSettings = reviewTools.children[0];
 
   const carret = document.createElement("div");
@@ -72,7 +72,7 @@ function createButton() {
   reviewTools.insertBefore(octofilterSettings, diffSettings);
 }
 
-function generateOptions() {
+async function generateOptions() {
   const extensions = getFileExtensions();
   const options = extensions
     .map(
@@ -85,7 +85,7 @@ function generateOptions() {
         </label>`
     )
     .join("");
-  const container = document.querySelector("#octofilter-options");
+  const container = await elementReady("#octofilter-options");
   container.innerHTML = options;
 }
 
@@ -106,7 +106,7 @@ function getFileExtensions() {
   ].sort();
 }
 
-function addListeners() {
+async function addListeners() {
   const config = { childList: true };
   const callback = function(mutationsList) {
     for (const mutation of mutationsList) {
@@ -123,7 +123,7 @@ function addListeners() {
     observer.observe(c, config);
   });
 
-  const button = document.querySelector("#octofilter-btn");
+  const button = await elementReady("#octofilter-btn");
   button.addEventListener("click", handleApply);
 }
 
